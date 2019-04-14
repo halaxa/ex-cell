@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "Ex Cell",
+  "version": "0.1",
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "all_frames": true
+    }
+  ],
+  "icons": {
+    "128": "img/128.png"
+  },
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": ["activeTab", "declarativeContent"]
+}
