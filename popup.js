@@ -31,7 +31,7 @@
 })();
 
 /**
- * @returns {HTMLInputElement}
+ * @returns {HTMLButtonElement}
  */
 function toggleVerticalModeButton() {
     return document.querySelector('.toggleVerticalMode');
