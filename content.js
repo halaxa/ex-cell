@@ -1,5 +1,4 @@
 // todo attr originalhorizontalalignment=2 from imported files?
-// todo un/verticalize on consequent clicks
 (function () {
     let isVerticalMode = false;
     let verticalCells = new Set();
