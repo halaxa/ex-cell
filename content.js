@@ -18,10 +18,8 @@
     }
 
     function makeSurePreviouslyVerticalizedCellsAreVertical() {
-        if ( ! isVerticalMode) {
-            for (const verticalCell of verticalCells.values()) {
-                verticalize(verticalCell)
-            }
+        for (const verticalCell of verticalCells.values()) {
+            verticalize(verticalCell)
         }
     }
 
