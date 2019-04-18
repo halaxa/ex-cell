@@ -2,12 +2,13 @@
 // todo un/verticalize on consequent clicks
 (function () {
     let isVerticalMode = false;
-    let verticalCells = [];
+    let verticalCells = new Set();
 
     window.setInterval(makeSurePreviouslyVerticalizedCellsAreVertical, 300);
-    document.addEventListener('click', verticalizeCell);
+    document.addEventListener('click', toggleVerticalCell);
+    chrome.runtime.onMessage.addListener(toggleVerticalMode);
 
-    function verticalizeCell(event) {
+    function toggleVerticalCell(event) {
         if (isVerticalMode) {
             if (event.target.innerText !== '') {
                 processElement(event.target);
@@ -19,21 +20,27 @@
 
     function makeSurePreviouslyVerticalizedCellsAreVertical() {
         if ( ! isVerticalMode) {
-            for (let i = 0, len = verticalCells.length; i < len; i++) {
-                verticalize(verticalCells[i]);
+            for (const verticalCell of verticalCells.values()) {
+                verticalize(verticalCell)
             }
         }
     }
 
     function processElement(element) {
+        console.log(element);
         let elements = Array.from(element.querySelectorAll('*'));
         if (elements.length > 10) {
             return;
         }
         elements.push(element);
         for (let len = elements.length, i = 0; i < len; i++) {
-            verticalize(element);
-            verticalCells.push(element);
+            if (elements[i].style.writingMode === 'vertical-lr') {
+                elements[i].style.writingMode = 'initial';
+                verticalCells.delete(elements[i]);
+            } else {
+                verticalize(elements[i]);
+                verticalCells.add(elements[i]);
+            }
         }
     }
 
@@ -41,12 +48,13 @@
         element.style.writingMode = 'vertical-lr';
     }
 
-    chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
+    function toggleVerticalMode (request, sender, sendResponse) {
         if (request === 'toggleVerticalMode') {
             isVerticalMode = !isVerticalMode;
         }
         sendResponse({
             'isVerticalMode': isVerticalMode
         });
-    });
+    }
+
 })();
