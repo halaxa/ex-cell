@@ -14,3 +14,4 @@ See mini screencast at https://youtu.be/tKCtGJW1-EY
 ## Known problems
 - It is not yet possible to specify more orientation options
 - The change will vanish on page reload or after leaving the document
+- Is is not yet possible to first select a cell or region of cells and the apply vertical style
