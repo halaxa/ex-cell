@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Ex Cell",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "content_scripts": [
     {
       "matches": [
