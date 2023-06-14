@@ -6,7 +6,7 @@ This Google Chrome extension is based on the need to be able to have vertical te
 Install Google Chrome extension at https://chrome.google.com/webstore/detail/ex-cell/mkboeldhilcedpoblpadgaknedmooafp
 
 ## Usage
-Click on the extension icon and click on "Start vertial mode". Then click on the cell you want to be vertically aligned.
+Click on the extension icon and click on "Start vertical mode". Then click on the cell you want to be vertically aligned.
 Then click the extension icon again and stop the mode.
 
 See mini screencast at https://youtu.be/tKCtGJW1-EY
